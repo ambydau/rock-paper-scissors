@@ -7,7 +7,7 @@ const computerScoreSpan = document.querySelector("#computer");
 const resetButton = document.querySelector(".reset-btn");
 let userScore = 0;
 let computerScore = 0;
-
+let count = 0;
 
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
@@ -29,19 +29,19 @@ function game() {
         case "scissorsscissors":
         case "rockrock":
         case "paperpaper":
-            message = "It was a tie!";
+            message = `Computer picks ${computerChoice} and player picks ${userChoice}. It's a tie!`;
             break;
         case "scissorsrock":
         case "rockpaper":
         case "paperscissors":
-            message = "Player wins!";
+            message = `Player wins! ${userChoice} beats ${computerChoice}`;
             userScore++;
             userScoreSpan.innerHTML = userScore;
             break;
         case "scissorspaper":
         case "rockscissors":
         case "paperrock":
-            message = "Computer wins!";
+            message = `You lose... ${computerChoice} beats ${userChoice}`;
             computerScore++;
             computerScoreSpan.innerHTML = computerScore;
             break;
@@ -52,9 +52,12 @@ function game() {
 function reset() {
     userScore = 0;
     computerScore = 0;
+    message = "";
     userScoreSpan.innerHTML = userScore;
     computerScoreSpan.innerHTML = computerScore;
+    winnerMsg.innerHTML = message;
 }
+
 
 
 
